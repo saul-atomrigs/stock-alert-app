@@ -18,7 +18,7 @@ export default function Button({
   danger = false,
   secondary = false,
   disabled = false,
-  fullWidth = false,
+  fullWidth,
 }: ButtonProps) {
   return (
     <StyeledButton
@@ -34,7 +34,7 @@ export default function Button({
   );
 }
 
-const StyeledButton = styled.button`
+const StyeledButton = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   border-radius: 0.375rem;
