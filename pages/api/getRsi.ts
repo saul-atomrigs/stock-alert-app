@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import axios from 'axios';
-import { STOCKLIST } from '../data/stocklist';
+import { STOCKLIST } from '../../data/stocklist';
 
 type RsiProps = {
   setOverbought: Dispatch<SetStateAction<string[]>>;
