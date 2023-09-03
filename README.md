@@ -1,38 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 기획 의도
+보조지표 알림을 받을 수 있는 서비스는 유료밖에 없어서 이를 무료로 사용할 수 있는 서비스를 개발하였습니다. 
+단, 1분에 5개 종목만 받아올 수 있습니다. 
 
-## Getting Started
+배포 URL: https://stock-alert-app.vercel.app/
 
-First, run the development server:
+## 주요 개발 포인트 (이슈, 버그, 개선)
+### July 31, 2023 [타입 에러]
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+[에러 내용] `styled-component` 사용 시 `prop` 들에 대한 타입 정의 필요 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[해결] `styled.button<타입>` ← 이런 식
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+[커밋] https://github.com/saul-atomrigs/stock-alert-app/commit/71099cd4deebf14b2a119a907b4a795be847ce86
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+[출처] https://stackoverflow.com/questions/52404958/using-styled-components-with-typescript-prop-does-not-exist
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### July 31, 2023 ****[Next.js] Vercel 배포 시 나타난 'Build optimization failed: found page without a React Component as default export in pages/...' error****
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[이유] valid React Component가 아닌 것을 export하는 페이지는 렌더링 될 때 오류를 일으키거나 빌드 성능을 저하시킬 수 있다
 
-## Learn More
+[해결]  `pages` 디렉터리와 동일한 레벨에 있는 `data`디렉터리로 옮기니 성공적으로 배포됨
 
-To learn more about Next.js, take a look at the following resources:
+[커밋] https://github.com/saul-atomrigs/stock-alert-app/commit/21c5f007c59a4c2c46244373e454cb94abf0cef3
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[출처] [https://velog.io/@bjy100/Next.js-Vercel-배포-시-나타난-Build-optimization-failed-found-page-without-a-React-Component-as-default-export-in-pages](https://velog.io/@bjy100/Next.js-Vercel-%EB%B0%B0%ED%8F%AC-%EC%8B%9C-%EB%82%98%ED%83%80%EB%82%9C-Build-optimization-failed-found-page-without-a-React-Component-as-default-export-in-pages)...-error
