@@ -59,20 +59,19 @@ const TableHeaderTitle = styled.span`
 const TableBody = styled.div`
   display: flex;
   padding-top: 1rem;
+  padding-bottom: 0.25rem;
   gap: 0.5rem;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gray-800, #2e3030) transparent;
+  overflow-x: auto;
+  /* blur effect at the end: */
   &::-webkit-scrollbar {
     width: 0.5rem;
+    height: 0.25rem;
   }
   &::-webkit-scrollbar-track {
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: var(--gray-800, #2e3030);
+    background: var(--gray-100, #edf2f7);
     border-radius: 0.5rem;
-    border: 3px solid transparent;
   }
 `;
