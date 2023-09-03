@@ -21,7 +21,7 @@ export default function Button({
   fullWidth,
 }: ButtonProps) {
   return (
-    <StyeledButton
+    <PrimaryButton
       type={type}
       onClick={onClick}
       disabled={disabled}
@@ -29,32 +29,31 @@ export default function Button({
       secondary={secondary}
       danger={danger}
     >
-      {children}
-    </StyeledButton>
+      <ButtonText>{children}</ButtonText>
+    </PrimaryButton>
   );
 }
 
-const StyeledButton = styled.button<ButtonProps>`
-  display: flex;
+const PrimaryButton = styled.button<ButtonProps>`
+  display: inline-flex;
   justify-content: center;
-  border-radius: 0.375rem;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  outline: none;
-  outline-offset: 2px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    opacity: 0.8;
-  }
-  &:disabled {
-    opacity: 0.5;
-    cursor: default;
-  }
-  ${props => props.fullWidth && 'width: 100%;'}
-  ${props => props.secondary && 'color: #111827;'}
-  ${props => props.danger && 'background-color: #F87171;'}
-  ${props => !props.secondary && !props.danger && 'background-color: #60A5FA;'}
+  align-items: center;
+  flex-shrink: 0;
+  height: 3.5rem;
+  min-height: 3.5rem;
+  max-height: 3.5rem;
+  width: ${props => (props.fullWidth ? '100%' : 'auto')};
+  padding: 0rem 1.5rem;
+  border-radius: 0.5rem;
+  background: var(--gray-900, #3a3c3c);
+`;
+
+const ButtonText = styled.span`
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 1.75rem */
 `;
