@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Chip from '../Chip';
 
 type TableProps = {
   overbought: string[];
@@ -9,6 +10,8 @@ type TableProps = {
 };
 
 export default function Table({ overbought, oversold }: TableProps) {
+  const [selectedStockIndex, setSelectedStockIndex] = useState(0);
+
   return (
     <PrimaryTable>
       <StyledTabs>
@@ -19,13 +22,25 @@ export default function Table({ overbought, oversold }: TableProps) {
 
         <StyledTabPanel>
           {oversold.map(stock => (
-            <div key={stock}>{stock}</div>
+            <Chip
+              key={stock}
+              onClick={() => setSelectedStockIndex(oversold.indexOf(stock))}
+              selected={selectedStockIndex === oversold.indexOf(stock)}
+            >
+              {stock}
+            </Chip>
           ))}
         </StyledTabPanel>
 
         <StyledTabPanel>
           {overbought.map(stock => (
-            <div key={stock}>{stock}</div>
+            <Chip
+              key={stock}
+              onClick={() => setSelectedStockIndex(oversold.indexOf(stock))}
+              selected={selectedStockIndex === oversold.indexOf(stock)}
+            >
+              {stock}
+            </Chip>
           ))}
         </StyledTabPanel>
       </StyledTabs>
