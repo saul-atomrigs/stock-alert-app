@@ -13,7 +13,10 @@ export default function RsiPage() {
 
   return (
     <Main>
-      <Table overbought={overbought} oversold={oversold} />
+      <TableGroup>
+        <Table stockData={overbought} type="overbought" />
+        <Table stockData={oversold} type="oversold" />
+      </TableGroup>
 
       <Button fullWidth onClick={() => getRsi({ setOverbought, setOversold })}>
         {'GET RSI'}
@@ -26,7 +29,12 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
   padding: 1rem;
   height: calc(100vh - 3rem);
+`;
+
+const TableGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 30%;
 `;

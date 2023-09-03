@@ -1,81 +1,78 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
 import Chip from '../Chip';
 
 type TableProps = {
-  overbought: string[];
-  oversold: string[];
+  stockData: string[];
+  type: string;
 };
 
-export default function Table({ overbought, oversold }: TableProps) {
+export default function Table({ stockData, type }: TableProps) {
   const [selectedStockIndex, setSelectedStockIndex] = useState(0);
 
   return (
-    <PrimaryTable>
-      <StyledTabs>
-        <StyledTabList>
-          <Tab>과매도 (매수 추천)</Tab>
-          <Tab>과매수 (매도 추천)</Tab>
-        </StyledTabList>
+    <TableContainer>
+      <TableHeader>
+        <TableHeaderTitle>
+          {type === 'overbought' ? '과매수' : '과매도'}
+        </TableHeaderTitle>
+      </TableHeader>
 
-        <StyledTabPanel>
-          {oversold.map(stock => (
-            <Chip
-              key={stock}
-              onClick={() => setSelectedStockIndex(oversold.indexOf(stock))}
-              selected={selectedStockIndex === oversold.indexOf(stock)}
-            >
-              {stock}
-            </Chip>
-          ))}
-        </StyledTabPanel>
-
-        <StyledTabPanel>
-          {overbought.map(stock => (
-            <Chip
-              key={stock}
-              onClick={() => setSelectedStockIndex(oversold.indexOf(stock))}
-              selected={selectedStockIndex === oversold.indexOf(stock)}
-            >
-              {stock}
-            </Chip>
-          ))}
-        </StyledTabPanel>
-      </StyledTabs>
-    </PrimaryTable>
+      <TableBody>
+        {stockData.map(stock => (
+          <Chip
+            key={stock}
+            onClick={() => setSelectedStockIndex(stockData.indexOf(stock))}
+            selected={selectedStockIndex === stockData.indexOf(stock)}
+          >
+            {stock}
+          </Chip>
+        ))}
+      </TableBody>
+    </TableContainer>
   );
 }
 
-const PrimaryTable = styled.table`
+const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  height: 70%;
+`;
+
+const TableHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  flex-shrink: 0;
+  height: 3rem;
+  border-bottom: 1px solid var(--gray-200, #e2e8f0);
 `;
 
-const StyledTabs = styled(Tabs)`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledTabList = styled(TabList)`
-  padding: 0rem;
-  background: var(--gray-900, #3a3c3c);
-  color: var(--white, #fff);
-  text-align: center;
+const TableHeaderTitle = styled.span`
+  color: var(--black, #000);
   font-family: Pretendard;
-  font-size: 0.875rem;
+  font-size: 1.25rem;
   font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 140%; /* 1.75rem */
 `;
 
-const StyledTabPanel = styled(TabPanel)`
+const TableBody = styled.div`
   display: flex;
-  flex-direction: column;
+  padding-top: 1rem;
   gap: 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-800, #2e3030) transparent;
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray-800, #2e3030);
+    border-radius: 0.5rem;
+    border: 3px solid transparent;
+  }
 `;
