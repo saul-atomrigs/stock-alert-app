@@ -7,7 +7,7 @@ type TableProps = {
   type: string;
 };
 
-export default function Table({ stockData, type }: TableProps) {
+export default function Table({ stockData = [], type }: TableProps) {
   const [selectedStockIndex, setSelectedStockIndex] = useState(0);
 
   return (
