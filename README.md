@@ -24,3 +24,26 @@
 [커밋] https://github.com/saul-atomrigs/stock-alert-app/commit/21c5f007c59a4c2c46244373e454cb94abf0cef3
 
 [출처] [https://velog.io/@bjy100/Next.js-Vercel-배포-시-나타난-Build-optimization-failed-found-page-without-a-React-Component-as-default-export-in-pages](https://velog.io/@bjy100/Next.js-Vercel-%EB%B0%B0%ED%8F%AC-%EC%8B%9C-%EB%82%98%ED%83%80%EB%82%9C-Build-optimization-failed-found-page-without-a-React-Component-as-default-export-in-pages)...-error
+
+### **[Next.js] 환경변수가 undefined 일 때 August 3, 2023**
+
+[에러 내용] 개발환경에서는 잘 작동되었지만 프로덕션 환경에서 env 변수가 `undefined` 반환하는 이슈
+
+GET https://api.polygon.io/v1/indicators/rsi/AAPL?timespan=day&adjusted=true&window=14&series_type=close&order=desc&limit=1&apiKey=undefined 401
+
+[이유] 서버사이드에서는 잘 읽히는 환경변수가 클라이언트 사이드에서는 읽히지 않는것
+
+[해결] 두 가지 해결 방법. 첫째는 환경변수 앞에 `NEXT_PUBLIC_` 을 붙여주는 것. 다른 방법은 `next.config.js` 에 다음 코드스니펫 추가:
+
+```jsx
+module.exports = {
+  reactStrictMode: true,
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  }
+}
+```
+
+[커밋] https://github.com/saul-atomrigs/stock-alert-app/commit/b6c2584338d33c00f898a0d4719274b68bb9dca0
+
+[출처] https://stackoverflow.com/a/68189283/19228776
