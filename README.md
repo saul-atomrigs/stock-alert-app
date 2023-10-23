@@ -1,10 +1,10 @@
-## 기획 의도
+## 📌 제작 의도
 보조지표 알림을 받을 수 있는 서비스는 유료밖에 없어서 이를 무료로 사용할 수 있는 서비스를 개발하였습니다. 
 단, 1분에 5개 종목만 받아올 수 있습니다. 
 
 배포 URL: https://stock-alert-app.vercel.app/
 
-## 주요 개발 포인트 (이슈, 버그, 개선)
+## 📌 개발 포인트 (이슈, 버그, 개선)
 ### July 31, 2023 [타입 에러]
 
 [에러 내용] `styled-component` 사용 시 `prop` 들에 대한 타입 정의 필요 
@@ -25,7 +25,7 @@
 
 [출처] [https://velog.io/@bjy100/Next.js-Vercel-배포-시-나타난-Build-optimization-failed-found-page-without-a-React-Component-as-default-export-in-pages](https://velog.io/@bjy100/Next.js-Vercel-%EB%B0%B0%ED%8F%AC-%EC%8B%9C-%EB%82%98%ED%83%80%EB%82%9C-Build-optimization-failed-found-page-without-a-React-Component-as-default-export-in-pages)...-error
 
-### **[Next.js] 환경변수가 undefined 일 때 August 3, 2023**
+### August 3, 2023 **[Next.js] 환경변수가 undefined 일 때**
 
 [에러 내용] 개발환경에서는 잘 작동되었지만 프로덕션 환경에서 env 변수가 `undefined` 반환하는 이슈
 
@@ -47,3 +47,11 @@ module.exports = {
 [커밋] https://github.com/saul-atomrigs/stock-alert-app/commit/b6c2584338d33c00f898a0d4719274b68bb9dca0
 
 [출처] https://stackoverflow.com/a/68189283/19228776
+
+### September 7, 2023 Next.js 에서 Styled-Components 사용 시 스타일이 적용되지 않은 HTML 코드가 먼저 렌더링
+
+[이유] 자바스크립트 코드가 적용이 되지 않은 페이지가 미리 렌더링되기 때문에 `CSS-in-JS`로 스타일링을 하면 **스타일이 적용되지 않은 html 코드가 먼저 렌더링**되는 문제가 발생하게 된다.
+
+[해결] **`html` 파일에 `CSS-in-JS` 형식으로 작성된 스타일 요소들을 주입**시켜서 스타일이 뒤늦게 적용되는 문제를 해결 (https://nextjs.org/docs/pages/building-your-application/routing/custom-document#customizing-renderpage)
+
+[출처] [https://velog.io/@eunnbi/NextJS-styled-components와-함께-사용하기](https://velog.io/@eunnbi/NextJS-styled-components%EC%99%80-%ED%95%A8%EA%BB%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
