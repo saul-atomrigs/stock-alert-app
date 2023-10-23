@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Chip from '../Chip';
-
-type TableProps = {
-  stockData: string[];
-  type: string;
-};
+import type { TableProps } from '../types';
+import Chip from './Chip';
 
 export default function Table({ stockData = [], type }: TableProps) {
   const [selectedStockIndex, setSelectedStockIndex] = useState(0);
@@ -62,7 +58,6 @@ const TableBody = styled.div`
   padding-bottom: 0.25rem;
   gap: 0.5rem;
   overflow-x: auto;
-  /* blur effect at the end: */
   &::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.25rem;

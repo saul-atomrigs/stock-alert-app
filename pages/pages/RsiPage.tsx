@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Table from '../components/table/Table';
+import Table from '../components/Table';
 import Button from '../components/Button';
 import { getRsi } from '../api/getRsi';
 

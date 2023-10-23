@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-type ChipProps = {
-  children: string;
-  key: string;
-  selected?: boolean;
-  onClick?: () => void;
-};
+import type { ChipProps } from '../types';
 
 export default function Chip({ children, onClick, selected }: ChipProps) {
   return (

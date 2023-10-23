@@ -1,15 +1,6 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
-
-type ButtonProps = {
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  fullWidth?: boolean;
-  children?: ReactNode;
-  onClick?: () => void;
-  secondary?: boolean;
-  danger?: boolean;
-  disabled?: boolean;
-};
+import type { ButtonProps } from '../types';
 
 export default function Button({
   type = 'button',
