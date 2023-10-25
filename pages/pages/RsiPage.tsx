@@ -31,6 +31,8 @@ const Main = styled.main`
   justify-content: space-between;
   padding: 1rem;
   height: calc(100vh - 3rem);
+  width: 80%;
+  max-width: 700px;
 `;
 
 const TableGroup = styled.div`
