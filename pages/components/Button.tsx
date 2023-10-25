@@ -45,7 +45,12 @@ const PrimaryButton = styled.button<ButtonProps>`
   width: ${props => (props.fullWidth ? '100%' : 'auto')};
   padding: 0rem 1.5rem;
   border-radius: 0.5rem;
-  background: var(--gray-900, #3a3c3c);
+  background: var(--gray-900, #222);
+  cursor: pointer;
+  &:hover,
+  &:active {
+    background: var(--gray-800, #333);
+  }
 `;
 
 const ButtonText = styled.span`

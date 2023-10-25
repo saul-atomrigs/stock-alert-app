@@ -19,7 +19,7 @@ export default function RsiPage() {
       </TableGroup>
 
       <Button fullWidth onClick={() => getRsi({ setOverbought, setOversold })}>
-        {'GET RSI'}
+        {'RSI 스캔 시작하기'}
       </Button>
     </Main>
   );
