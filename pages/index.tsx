@@ -13,4 +13,5 @@ export default function Home() {
 const MainLayout = styled.main`
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
