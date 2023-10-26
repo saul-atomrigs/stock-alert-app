@@ -39,18 +39,15 @@ const Button = {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
     height: 3.5rem;
-    min-height: 3.5rem;
-    max-height: 3.5rem;
     width: ${props => (props.fullWidth ? '100%' : 'auto')};
     padding: 0rem 1.5rem;
     border-radius: 0.5rem;
-    background: var(--gray-900, #222);
+    background: var(--green-300, #7bf6b7);
     cursor: pointer;
     &:hover,
     &:active {
-      background: var(--gray-800, #333);
+      background: var(--green-200, #4ef19d);
     }
   `,
 
