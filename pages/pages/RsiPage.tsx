@@ -37,7 +37,7 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-  height: calc(100vh - 3rem);
+  height: calc(100dvh - 3rem);
   width: 90%;
   max-width: 700px;
   border: 1px solid var(--gray-200, #e2e8f0);
