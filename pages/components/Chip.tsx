@@ -3,24 +3,35 @@ import styled from 'styled-components';
 
 type ChipProps = {
   children: string;
-  key: string;
+  key?: string;
   selected?: boolean;
   onClick?: () => void;
+  clickable?: boolean;
 };
 
-export default function Chip({ children, onClick, selected }: ChipProps) {
+export default function Chip({
+  children,
+  key,
+  onClick,
+  selected,
+  clickable = false,
+}: ChipProps) {
   return (
     <>
       {selected ? (
-        <PrimaryChip onClick={onClick}>{children}</PrimaryChip>
+        <PrimaryChip onClick={onClick} clickable={clickable}>
+          {children}
+        </PrimaryChip>
       ) : (
-        <SecondaryChip onClick={onClick}>{children}</SecondaryChip>
+        <SecondaryChip onClick={onClick} clickable={clickable}>
+          {children}
+        </SecondaryChip>
       )}
     </>
   );
 }
 
-const PrimaryChip = styled.div`
+const PrimaryChip = styled.div<{ clickable?: boolean }>`
   background: var(--gray-900, #3a3c3c);
   border-radius: 1rem;
   padding: 0.2rem 0.8rem;
@@ -34,6 +45,7 @@ const PrimaryChip = styled.div`
   line-height: 140%; /* 1.4rem */
   color: var(--white, #fff);
   width: fit-content;
+  cursor: ${({ clickable }) => (clickable ? 'pointer' : 'default')};
 `;
 
 const SecondaryChip = styled(PrimaryChip)`

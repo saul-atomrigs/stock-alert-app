@@ -15,12 +15,16 @@ export default function Table({ stockData = [], type }: TableProps) {
       <TableHeader>
         <TableHeaderTitle>
           {type === 'overbought' ? '과매수' : '과매도'}
+          <Chip onClick={() => {}} selected={false}>
+            {type === 'overbought' ? '매도를 추천해요' : '매수를 추천해요'}
+          </Chip>
         </TableHeaderTitle>
       </TableHeader>
 
       <TableBody>
         {stockData.map(stock => (
           <Chip
+            clickable={true}
             key={stock}
             onClick={() => setSelectedStockIndex(stockData.indexOf(stock))}
             selected={selectedStockIndex === stockData.indexOf(stock)}
@@ -48,12 +52,14 @@ const TableHeader = styled.div`
 `;
 
 const TableHeaderTitle = styled.span`
+  display: flex;
   color: var(--black, #000);
   font-family: Pretendard;
   font-size: 1.25rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%; /* 1.75rem */
+  gap: 0.5rem;
 `;
 
 const TableBody = styled.div`
