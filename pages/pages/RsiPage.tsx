@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import Table from '../components/Table';
 import Button from '../components/Button';
-import { getRsi } from '../api/getRsi';
+import { getRsi } from '../apis/getRsi';
 
 export default function RsiPage() {
   const [overbought, setOverbought] = useState<string[]>([]);
