@@ -5,11 +5,13 @@ import styled from 'styled-components';
 
 import Table from '../components/Table';
 import Button from '../components/Button';
+import { Loading } from '../components/Loading';
 import { getRsi } from '../apis/getRsi';
 
 export default function RsiPage() {
   const [overbought, setOverbought] = useState<string[]>([]);
   const [oversold, setOversold] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <Main>
@@ -20,8 +22,11 @@ export default function RsiPage() {
 
       <Chart />
 
-      <Button fullWidth onClick={() => getRsi({ setOverbought, setOversold })}>
-        {'RSI 스캔 시작하기'}
+      <Button
+        fullWidth
+        onClick={() => getRsi({ setOverbought, setOversold, setIsLoading })}
+      >
+        {isLoading ? <Loading /> : 'RSI 스캔 시작하기'}
       </Button>
     </Main>
   );
@@ -33,7 +38,7 @@ const Main = styled.main`
   justify-content: space-between;
   padding: 1rem;
   height: calc(100vh - 3rem);
-  width: 80%;
+  width: 90%;
   max-width: 700px;
   border: 1px solid var(--gray-200, #e2e8f0);
   border-radius: 1rem;
