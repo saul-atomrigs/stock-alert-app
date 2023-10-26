@@ -18,6 +18,8 @@ export default function RsiPage() {
         <Table stockData={oversold} type="oversold" />
       </TableGroup>
 
+      <Chart />
+
       <Button fullWidth onClick={() => getRsi({ setOverbought, setOversold })}>
         {'RSI 스캔 시작하기'}
       </Button>
@@ -41,4 +43,9 @@ const TableGroup = styled.div`
   display: flex;
   flex-direction: column;
   height: 30%;
+`;
+
+const Chart = styled.div`
+  height: 60%;
+  background-color: aliceblue;
 `;
