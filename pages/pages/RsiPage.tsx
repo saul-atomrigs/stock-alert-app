@@ -33,6 +33,8 @@ const Main = styled.main`
   height: calc(100vh - 3rem);
   width: 80%;
   max-width: 700px;
+  border: 1px solid var(--gray-200, #e2e8f0);
+  border-radius: 1rem;
 `;
 
 const TableGroup = styled.div`
