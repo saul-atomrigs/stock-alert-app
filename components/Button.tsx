@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import { green300, green500 } from '@/styles/design-system';
+
 type ButtonProps = {
   type?: 'button' | 'submit' | 'reset' | undefined;
   fullWidth?: boolean;
@@ -43,11 +45,11 @@ const Button = {
     width: ${props => (props.fullWidth ? '100%' : 'auto')};
     padding: 0rem 1.5rem;
     border-radius: 0.5rem;
-    background: var(--green-300, #7bf6b7);
+    background: ${green300};
     cursor: pointer;
     &:hover,
     &:active {
-      background: var(--green-200, #4ef19d);
+      background: ${green500};
     }
   `,
 

@@ -7,6 +7,7 @@ import Table from '../../components/Table';
 import Button from '../../components/Button';
 import { Loading } from '../../components/Loading';
 import { getRsi } from '../../api/getRsi';
+import { gray700 } from '@/styles/design-system';
 
 export default function RsiPage() {
   const [overbought, setOverbought] = useState<string[]>([]);
@@ -40,7 +41,7 @@ const Main = styled.main`
   height: calc(100dvh - 3rem);
   width: 90%;
   max-width: 700px;
-  border: 1px solid var(--gray-200, #e2e8f0);
+  border: 1px solid ${gray700};
   border-radius: 1rem;
 `;
 
