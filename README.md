@@ -5,6 +5,8 @@
 배포 URL: https://stock-alert-app.vercel.app/
 
 ## 📌 Design System
+https://github.com/saul-atomrigs/stock-alert-app/tree/main/styles
+
 ![ezgif com-video-to-gif](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/d66a0e88-369f-4d69-9c24-da4dcbb5a735)
 
 ## 📌 Debuggin (이슈, 버그, 개선)
