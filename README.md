@@ -4,6 +4,16 @@
 
 ### 배포 URL: https://stock-alert-app.vercel.app/
 
+## 📌 Authors
+- [@saul-atomrigs](https://www.github.com/saul-atomrigs)
+
+
+## 📌 Tech Stack
+- 언어: TypeScript
+- 프론트엔드: React18, Next.js13, Styled-Components
+- 주가 데이터 API: polygon.io
+- 코드 컨벤션: eslint, prettier
+
 ## 📌 Design System
 https://github.com/saul-atomrigs/stock-alert-app/tree/main/styles
 
