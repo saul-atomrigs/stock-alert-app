@@ -1,6 +1,6 @@
-import React from 'react';
-import RsiPage from './pages/RsiPage';
 import styled from 'styled-components';
+
+import RsiPage from './RsiPage';
 
 export default function Home() {
   return (

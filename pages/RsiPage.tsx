@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Table from '../../components/Table';
-import Button from '../../components/Button';
-import { Loading } from '../../components/Loading';
-import { getRsi } from '../../api/getRsi';
+import { getRsi } from '@/api/getRsi';
+import Table from '@/components/Table';
+import Button from '@/components/Button';
+import { Loading } from '@/components/Loading';
 import { gray700 } from '@/styles/design-system';
 
 export default function RsiPage() {

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+
 import Chip from './Chip';
+import { gray100, gray200, gray900 } from '@/styles/design-system';
 
 type TableProps = {
   stockData: string[];
@@ -48,11 +50,11 @@ const Table = {
     justify-content: space-between;
     align-items: center;
     height: 3rem;
-    border-bottom: 1px solid var(--gray-200, #e2e8f0);
+    border-bottom: 1px solid ${gray200};
   `,
   HeaderTitle: styled.span`
     display: flex;
-    color: var(--black, #000);
+    color: ${gray900};
     font-family: Pretendard;
     font-size: 1.25rem;
     font-style: normal;
@@ -75,8 +77,8 @@ const Table = {
       background: transparent;
     }
     &::-webkit-scrollbar-thumb {
-      background: var(--gray-100, #edf2f7);
+      background: ${gray100};
       border-radius: 0.5rem;
     }
   `,
-}
+};
