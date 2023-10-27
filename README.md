@@ -2,7 +2,7 @@
 보조지표 알림을 받을 수 있는 서비스는 유료밖에 없어서 이를 무료로 사용할 수 있는 서비스를 개발하였습니다. 
 단, 1분에 5개 종목만 받아올 수 있습니다. 
 
-배포 URL: https://stock-alert-app.vercel.app/
+### 배포 URL: https://stock-alert-app.vercel.app/
 
 ## 📌 Design System
 https://github.com/saul-atomrigs/stock-alert-app/tree/main/styles
