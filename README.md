@@ -4,7 +4,10 @@
 
 배포 URL: https://stock-alert-app.vercel.app/
 
-## 📌 개발 포인트 (이슈, 버그, 개선)
+## 📌 Design System
+![ezgif com-video-to-gif](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/d66a0e88-369f-4d69-9c24-da4dcbb5a735)
+
+## 📌 Debuggin (이슈, 버그, 개선)
 ### July 31, 2023 [타입 에러]
 
 [에러 내용] `styled-component` 사용 시 `prop` 들에 대한 타입 정의 필요 
