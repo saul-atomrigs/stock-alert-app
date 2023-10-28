@@ -38,7 +38,7 @@ const debouncedGetMetroData = debounce(getMetroData, 700);
 	...
   onChangeText={text => {
     debouncedGetMetroData(text);
-		^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   }}
 />
 ```
