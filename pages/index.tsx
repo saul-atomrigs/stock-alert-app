@@ -1,11 +1,14 @@
+import { Suspense, lazy } from 'react';
 import styled from 'styled-components';
 
-import RsiPage from './RsiPage';
+const RsiPage = lazy(() => import('./RsiPage'));
 
 export default function Home() {
   return (
     <MainLayout>
-      <RsiPage />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RsiPage />
+      </Suspense>
     </MainLayout>
   );
 }
