@@ -19,6 +19,18 @@ https://github.com/saul-atomrigs/stock-alert-app/tree/main/styles
 
 ![ezgif com-video-to-gif](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/d66a0e88-369f-4d69-9c24-da4dcbb5a735)
 
+## 📌 Performance (성능, 속도 개선)
+- `React Suspense` 및 `lazy loading` 컴포넌트
+  ```js
+  import { Suspense, lazy } from 'react';
+
+  const RsiPage = lazy(() => import('./RsiPage'));
+
+  <Suspense fallback={<div>Loading...</div>}>
+    <RsiPage />
+  </Suspense>
+  ```
+
 ## 📌 Debugging (이슈, 버그)
 ### July 31, 2023 [타입 에러]
 
