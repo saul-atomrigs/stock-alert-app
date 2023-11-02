@@ -4,12 +4,22 @@
 
 ### 배포 URL: https://stock-alert-app.vercel.app/
 
+## 📌 Authors
+- [@saul-atomrigs](https://www.github.com/saul-atomrigs)
+
+
+## 📌 Tech Stack
+- 언어: TypeScript
+- 프론트엔드: React18, Next.js13, Styled-Components
+- 주가 데이터 API: polygon.io
+- 코드 컨벤션: eslint, prettier
+
 ## 📌 Design System
 https://github.com/saul-atomrigs/stock-alert-app/tree/main/styles
 
 ![ezgif com-video-to-gif](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/d66a0e88-369f-4d69-9c24-da4dcbb5a735)
 
-## 📌 Debuggin (이슈, 버그, 개선)
+## 📌 Debugging (이슈, 버그)
 ### July 31, 2023 [타입 에러]
 
 [에러 내용] `styled-component` 사용 시 `prop` 들에 대한 타입 정의 필요 
