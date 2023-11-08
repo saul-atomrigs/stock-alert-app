@@ -39,8 +39,8 @@ const Main = styled.main`
   justify-content: space-between;
   padding: 1rem;
   height: calc(100dvh - 3rem);
-  width: 90%;
-  max-width: 700px;
+  // 가로길이 최소값 300px, 평상시 90%, 최대 700px (media query 대신 사용함):
+  width: clamp(300px, 90%, 700px);
   border: 1px solid ${gray700};
   border-radius: 1rem;
 `;
