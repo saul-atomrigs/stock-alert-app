@@ -4,6 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import { getRsi } from '@/api/getRsi';
+import Chart from '@/components/Chart';
 import Table from '@/components/Table';
 import Button from '@/components/Button';
 import { Loading } from '@/components/Loading';
@@ -16,12 +17,14 @@ export default function RsiPage() {
 
   return (
     <Main>
-      <TableGroup>
-        <Table stockData={overbought} type="overbought" />
-        <Table stockData={oversold} type="oversold" />
-      </TableGroup>
+      <div>
+        <Chart />
 
-      <Chart />
+        <TableGroup>
+          <Table stockData={overbought} type="overbought" />
+          <Table stockData={oversold} type="oversold" />
+        </TableGroup>
+      </div>
 
       <Button
         fullWidth
@@ -49,9 +52,5 @@ const TableGroup = styled.div`
   display: flex;
   flex-direction: column;
   height: 30%;
-`;
-
-const Chart = styled.div`
-  height: 60%;
-  background-color: aliceblue;
+  gap: 2rem;
 `;
