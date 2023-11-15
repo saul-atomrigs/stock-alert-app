@@ -1,14 +1,17 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import getAggregates from '@/api/getAggregates';
 import { useEffect, useState } from 'react';
 import ApexCharts from 'react-apexcharts';
 
-export default function ChartComponent() {
-  const [closeStockPrices, setCloseStockPrices] = useState([]);
+type ChartProps = {
+  ticker: string; // TODO: string 타입을 실제 ticker 리터럴 타입으로 좁히기
+};
+
+export default function ChartComponent({ticker}: ChartProps) {
+  const [closeStockPrices, setCloseStockPrices] = useState<number[]>([]);
 
   useEffect(() => {
     async function getCloseStockPrices() {
-      const closeStockPrices = await getAggregates();
+      const closeStockPrices = await getAggregates(ticker);
       setCloseStockPrices(closeStockPrices);
     }
 

@@ -18,7 +18,7 @@ export default function RsiPage() {
   return (
     <Main>
       <div>
-        <Chart />
+        <Chart ticker={'AAPL'} />
 
         <TableGroup>
           <Table stockData={overbought} type="overbought" />
