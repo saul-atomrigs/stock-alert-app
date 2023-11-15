@@ -82,3 +82,20 @@ module.exports = {
 [해결] **`html` 파일에 `CSS-in-JS` 형식으로 작성된 스타일 요소들을 주입**시켜서 스타일이 뒤늦게 적용되는 문제를 해결 (https://nextjs.org/docs/pages/building-your-application/routing/custom-document#customizing-renderpage)
 
 [출처] [https://velog.io/@eunnbi/NextJS-styled-components와-함께-사용하기](https://velog.io/@eunnbi/NextJS-styled-components%EC%99%80-%ED%95%A8%EA%BB%98-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+
+### October 27, 2023 모바일 웹브라우저에서 주소창 또는 하단 탭바에 엘리먼트가 가려지는 이슈
+
+[원인] `height: 100vh` 는 모바일 웹브라우저의 상단 주소창 또는 하단 탭바가 열고 닫혀있을 때를 유동적으로 고려하지 않음 
+
+[해결] `dvh` (dynamic view height)를 사용해줌
+
+[출처] https://stackoverflow.com/questions/52848856/100vh-height-when-address-bar-is-shown-chrome-mobile
+
+### November 8, 2023 Responsive 한 width 설정을 위해 media query 대신 더 간결한 CSS 함수인 `clamp` 사용
+
+[예시] 
+
+```tsx
+// 가로길이 최소값 300px, 평상시 90%, 최대 700px (media query 대신 사용함):
+  width: clamp(300px, 90%, 700px);
+```
