@@ -10,7 +10,6 @@ type ChipProps = {
 
 export default function Chip({
   children,
-  key,
   onClick,
   selected,
   clickable = false,

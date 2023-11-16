@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import type { Results } from '@/types';
 import { getRsi } from '@/api/getRsi';
 import Chart from '@/components/Chart';
 import Table from '@/components/Table';
@@ -13,7 +14,22 @@ import { gray700 } from '@/styles/design-system';
 export default function RsiPage() {
   const [overbought, setOverbought] = useState<string[]>([]);
   const [oversold, setOversold] = useState<string[]>([]);
+  const [results, setResults] = useState<Results[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    results.forEach(result => {
+      if (result.isOverbought) {
+        if (!overbought.includes(result.stock)) {
+          setOverbought(prev => [...prev, result.stock]);
+        }
+      } else {
+        if (!oversold.includes(result.stock)) {
+          setOversold(prev => [...prev, result.stock]);
+        }
+      }
+    });
+  }, [results]);
 
   return (
     <Main>
@@ -26,10 +42,7 @@ export default function RsiPage() {
         </TableGroup>
       </div>
 
-      <Button
-        fullWidth
-        onClick={() => getRsi({ setOverbought, setOversold, setIsLoading })}
-      >
+      <Button fullWidth onClick={() => getRsi({ setResults, setIsLoading })}>
         {isLoading ? <Loading /> : 'RSI 스캔 시작하기'}
       </Button>
     </Main>

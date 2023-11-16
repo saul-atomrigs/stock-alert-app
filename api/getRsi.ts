@@ -1,18 +1,14 @@
 import { Dispatch, SetStateAction } from 'react';
 import axios from 'axios';
 import { STOCKLIST } from '../data/stocklist';
+import type {Results} from '@/types'
 
 type RsiProps = {
-  setOverbought: Dispatch<SetStateAction<string[]>>;
-  setOversold: Dispatch<SetStateAction<string[]>>;
+  setResults: Dispatch<SetStateAction<Results[]>>;
   setIsLoading: Dispatch<SetStateAction<boolean>>;
 };
 
-export async function getRsi({
-  setOverbought,
-  setOversold,
-  setIsLoading,
-}: RsiProps) {
+export async function getRsi({ setResults, setIsLoading }: RsiProps) {
   const sleep = (ms: number) => {
     return new Promise(resolve => {
       setTimeout(resolve, ms);
@@ -35,14 +31,30 @@ export async function getRsi({
             STOCKLIST[i + j],
             rest.data.results?.values[j]?.value,
           );
-          setOverbought(prev => [...prev, STOCKLIST[i + j]]);
+          // setOverbought(prev => [...prev, STOCKLIST[i + j]]);
+          setResults(prev => [
+            ...prev,
+            {
+              stock: STOCKLIST[i + j],
+              rsi: rest.data.results?.values[j]?.value,
+              isOverbought: true,
+            },
+          ]);
         } else if (rest.data.results?.values[j]?.value < 40) {
           console.log(
             '매수:',
             STOCKLIST[i + j],
             rest.data.results?.values[j]?.value,
           );
-          setOversold(prev => [...prev, STOCKLIST[i + j]]);
+          // setOversold(prev => [...prev, STOCKLIST[i + j]]);
+          setResults(prev => [
+            ...prev,
+            {
+              stock: STOCKLIST[i + j],
+              rsi: rest.data.results?.values[j]?.value,
+              isOverbought: false,
+            },
+          ]);
         }
       }
     }
