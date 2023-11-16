@@ -4,9 +4,7 @@
 
 ### 배포 URL: https://stock-alert-app.vercel.app/
 
-<a href="https://stock-alert-app.vercel.app/" target="_blank">
-  <img width="623" alt="" src="https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/de619745-79a9-4ce1-8563-0c80b0ec3565">
-</a>
+[screen-capture (4).webm](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/d9abba75-6c73-4f82-9b2e-c0ecc7a48eba)
 
 
 ## 📌 Authors
