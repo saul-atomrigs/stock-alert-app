@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-export default async function getAggregates(ticker) {
+type AggregatesProps = {
+  ticker: string;
+};
+
+export default async function getAggregates(ticker: string) {
   try {
     let closeStockPrices: number[] = [];
 

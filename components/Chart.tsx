@@ -6,7 +6,7 @@ type ChartProps = {
   ticker: string; // TODO: string 타입을 실제 ticker 리터럴 타입으로 좁히기
 };
 
-export default function ChartComponent({ticker}: ChartProps) {
+export default function ChartComponent({ ticker }: ChartProps) {
   const [closeStockPrices, setCloseStockPrices] = useState<number[]>([]);
 
   useEffect(() => {
