@@ -16,6 +16,7 @@ export default function RsiPage() {
   const [oversold, setOversold] = useState<string[]>([]);
   const [results, setResults] = useState<Results[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedTicker, setSelectedTicker] = useState('');
 
   useEffect(() => {
     results.forEach(result => {
@@ -34,11 +35,21 @@ export default function RsiPage() {
   return (
     <Main>
       <div>
-        <Chart ticker={'AAPL'} />
+        <Chart ticker={selectedTicker} />
 
         <TableGroup>
-          <Table stockData={overbought} type="overbought" />
-          <Table stockData={oversold} type="oversold" />
+          <Table
+            stockData={overbought}
+            type="overbought"
+            selectedTicker={selectedTicker}
+            setSelectedTicker={setSelectedTicker}
+          />
+          <Table
+            stockData={oversold}
+            type="oversold"
+            selectedTicker={selectedTicker}
+            setSelectedTicker={setSelectedTicker}
+          />
         </TableGroup>
       </div>
 

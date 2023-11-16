@@ -7,11 +7,16 @@ import { gray100, gray200, gray900 } from '@/styles/design-system';
 type TableProps = {
   stockData: string[];
   type: string;
+  selectedTicker: string;
+  setSelectedTicker: (ticker: string) => void;
 };
 
-export default function TableComponent({ stockData = [], type }: TableProps) {
-  const [selectedStockIndex, setSelectedStockIndex] = useState(0);
-
+export default function TableComponent({
+  stockData = [],
+  type,
+  selectedTicker,
+  setSelectedTicker,
+}: TableProps) {
   return (
     <Table.Container>
       <Table.Header>
@@ -28,8 +33,8 @@ export default function TableComponent({ stockData = [], type }: TableProps) {
           <Chip
             clickable={true}
             key={stock}
-            onClick={() => setSelectedStockIndex(stockData.indexOf(stock))}
-            selected={selectedStockIndex === stockData.indexOf(stock)}
+            onClick={() => setSelectedTicker(stock)}
+            selected={selectedTicker === stock}
           >
             {stock}
           </Chip>

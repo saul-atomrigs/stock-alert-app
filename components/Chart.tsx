@@ -16,7 +16,7 @@ export default function ChartComponent({ ticker }: ChartProps) {
     }
 
     getCloseStockPrices();
-  }, []);
+  }, [ticker]);
 
   return (
     <ApexCharts
@@ -26,6 +26,18 @@ export default function ChartComponent({ ticker }: ChartProps) {
         chart: {
           height: 500,
           width: 500,
+        },
+        xaxis: {
+          show: false,
+          labels: {
+            show: false,
+          },
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
         },
       }}
     />
