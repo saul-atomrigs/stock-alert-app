@@ -1,6 +1,10 @@
-import getAggregates from '@/api/getAggregates';
 import { useEffect, useState } from 'react';
-import ApexCharts from 'react-apexcharts';
+import dynamic from 'next/dynamic';
+
+import getAggregates from '@/api/getAggregates';
+const ApexCharts = dynamic(() => import('react-apexcharts'), {
+  ssr: false,
+});
 
 type ChartProps = {
   ticker: string; // TODO: string 타입을 실제 ticker 리터럴 타입으로 좁히기
