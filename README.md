@@ -15,6 +15,7 @@
 - 언어: TypeScript
 - 프론트엔드: React18, Next.js13, Styled-Components
 - 주가 데이터 API: polygon.io
+- 차트 라이브러리: apexcharts
 - 코드 컨벤션: eslint, prettier
 
 ## 📌 Design System
