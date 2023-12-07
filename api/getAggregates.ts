@@ -1,22 +1,31 @@
 import axios from 'axios';
+import { STOCKLIST } from '@/data/stocklist';
 
-type AggregatesProps = {
-  ticker: string;
+type Aggregate = {
+  Ticker: string;
+  close: number;
 };
 
-export default async function getAggregates(ticker: string) {
+export async function getAggregates() {
+  const today = new Date().toISOString().split('T')[0];
+
   try {
-    let closeStockPrices: number[] = [];
+    let closeStockPrices: Aggregate[] = [];
 
     const result = await axios(
-      `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-09-01/2023-11-10?adjusted=true&sort=asc&limit=120&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
+      `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/${today}?adjusted=true&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
     );
+
     const aggregates = result.data.results;
 
-    aggregates.forEach((element: { c: number }) => {
-      closeStockPrices.push(element.c);
+    // For each aggregate, if T is included in STOCKLIST, push it to closeStockPrices:
+    aggregates.forEach((element: { T: string }) => {
+      if (STOCKLIST.includes(element.T)) {
+        closeStockPrices.push({ Ticker: element.T, close: element.c });
+      }
     });
 
+    console.log(closeStockPrices);
     return closeStockPrices;
   } catch (error) {
     console.error('getAggregates Error', error);

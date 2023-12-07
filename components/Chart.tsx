@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 
-import getAggregates from '@/api/getAggregates';
+import getAggregatesByTicker from '@/api/getAggregatesByTicker';
 const ApexCharts = dynamic(() => import('react-apexcharts'), {
   ssr: false,
 });
@@ -15,8 +15,8 @@ export default function ChartComponent({ ticker }: ChartProps) {
 
   useEffect(() => {
     async function getCloseStockPrices() {
-      const closeStockPrices = await getAggregates(ticker);
-      setCloseStockPrices(closeStockPrices);
+      const closeStockPrices = await getAggregatesByTicker(ticker);
+      setCloseStockPrices(closeStockPrices!);
     }
 
     getCloseStockPrices();
