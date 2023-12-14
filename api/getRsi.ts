@@ -1,21 +1,22 @@
 import { Dispatch, SetStateAction } from 'react';
 import axios from 'axios';
+
+import type { Results } from '@/types';
 import { STOCKLIST } from '../data/stocklist';
-import type {Results} from '@/types'
 
 type RsiProps = {
   setResults: Dispatch<SetStateAction<Results[]>>;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  setIsRsiLoading: Dispatch<SetStateAction<boolean>>;
 };
 
-export async function getRsi({ setResults, setIsLoading }: RsiProps) {
+export async function getRsi({ setResults, setIsRsiLoading }: RsiProps) {
   const sleep = (ms: number) => {
     return new Promise(resolve => {
       setTimeout(resolve, ms);
     });
   };
 
-  setIsLoading(true);
+  setIsRsiLoading(true);
 
   try {
     for (let i = 0; i < STOCKLIST.length; i += 5) {
@@ -61,6 +62,6 @@ export async function getRsi({ setResults, setIsLoading }: RsiProps) {
   } catch {
     console.log('getRsi Error');
   } finally {
-    setIsLoading(false);
+    setIsRsiLoading(false);
   }
 }
