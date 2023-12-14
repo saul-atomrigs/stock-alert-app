@@ -3,3 +3,8 @@ export interface Results {
   rsi: number;
   isOverbought: boolean;
 }
+
+export interface Aggregate {
+  Ticker: string;
+  close: number;
+}

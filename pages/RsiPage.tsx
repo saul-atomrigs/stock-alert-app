@@ -3,13 +3,15 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import type { Results } from '@/types';
+import type { Aggregate, Results } from '@/types';
 import { getRsi } from '@/api/getRsi';
+import { getAggregates } from '@/api/getAggregates';
+import { gray700 } from '@/styles/design-system';
 import Chart from '@/components/Chart';
 import Table from '@/components/Table';
 import Button from '@/components/Button';
 import { Loading } from '@/components/Loading';
-import { gray700 } from '@/styles/design-system';
+import TickerSlider from '@/components/TickerSlider';
 
 export default function RsiPage() {
   const [overbought, setOverbought] = useState<string[]>([]);
@@ -17,6 +19,7 @@ export default function RsiPage() {
   const [results, setResults] = useState<Results[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedTicker, setSelectedTicker] = useState('');
+  const [aggregates, setAggregates] = useState<Aggregate[] | undefined>([]);
 
   useEffect(() => {
     results.forEach(result => {
@@ -33,10 +36,20 @@ export default function RsiPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [results]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAggregates();
+      setAggregates(response);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Main>
       <div>
         <Chart ticker={selectedTicker} />
+
+        <TickerSlider aggregates={aggregates} />
 
         <TableGroup>
           <Table
