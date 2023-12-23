@@ -1,23 +1,64 @@
 import axios from 'axios';
 
-type AggregatesProps = {
-  ticker: string;
+export type StockDataArray = {
+  date: string;
+  close: number;
+  volume: number;
+  open: number;
+  high: number;
+  low: number;
 };
 
 export default async function getAggregatesByTicker(ticker: string) {
   try {
-    let closeStockPrices: number[] = [];
+    const today = new Date().toISOString().split('T')[0];
+    const sixMonthsAgo = new Date(Date.now() - 12 * 30 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split('T')[0];
+
+    let stockDataArray: StockDataArray[] = [];
 
     const result = await axios(
-      `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/2023-09-01/2023-11-10?adjusted=true&sort=asc&limit=120&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
+      `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${sixMonthsAgo}/${today}?adjusted=true&sort=asc&limit=120&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
     );
     const aggregates = result.data.results;
 
-    aggregates.forEach((element: { c: number }) => {
-      closeStockPrices.push(element.c);
-    });
+    const convertTimestampToDate = (timestamp: string) => {
+      const date = new Date(timestamp);
 
-    return closeStockPrices;
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+      const day = String(date.getDate()).padStart(2, '0');
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const seconds = String(date.getSeconds()).padStart(2, '0');
+
+      const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+      return formattedDate;
+    };
+
+    aggregates.forEach(
+      (element: {
+        t: string;
+        o: number;
+        l: number;
+        h: number;
+        c: number;
+        v: number;
+      }) => {
+        stockDataArray.push({
+          date: convertTimestampToDate(element.t),
+          open: element.o,
+          low: element.l,
+          high: element.h,
+          close: element.c,
+          volume: element.v,
+        });
+      },
+    );
+
+    return stockDataArray;
   } catch (error) {
     console.error('getAggregates Error', error);
   }
