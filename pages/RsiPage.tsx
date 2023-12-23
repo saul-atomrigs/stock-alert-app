@@ -59,12 +59,6 @@ export default function RsiPage() {
       <div ref={ref}>
         <CandleChart width={width} ticker={selectedTicker} />
 
-        {isAggregatesLoading ? (
-          <SkeletonLoading width={'100%'} height={'2.5rem'} />
-        ) : (
-          <TickerSlider aggregates={aggregates} />
-        )}
-
         <TableGroup>
           <Table
             stockData={overbought}
@@ -81,9 +75,20 @@ export default function RsiPage() {
         </TableGroup>
       </div>
 
-      <Button fullWidth onClick={() => getRsi({ setResults, setIsRsiLoading })}>
-        {isRsiLoading ? <Loading /> : 'RSI 스캔 시작하기'}
-      </Button>
+      <div>
+        {isAggregatesLoading ? (
+          <SkeletonLoading width={'100%'} height={'2.5rem'} />
+        ) : (
+          <TickerSlider aggregates={aggregates} />
+        )}
+
+        <Button
+          fullWidth
+          onClick={() => getRsi({ setResults, setIsRsiLoading })}
+        >
+          {isRsiLoading ? <Loading /> : 'RSI 스캔 시작하기'}
+        </Button>
+      </div>
     </Main>
   );
 }

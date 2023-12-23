@@ -52,7 +52,7 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
       d => new Date(d.date),
     );
 
-  const height = 400;
+  const height = 350;
   const margin = { left: 0, right: 48, top: 20, bottom: 50 };
 
   const ema12 = ema()
