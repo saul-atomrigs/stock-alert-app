@@ -1,22 +1,19 @@
 ## 📌 제작 의도
-미국 주식 보조지표 알림을 받을 수 있는 서비스는 유료밖에 없었습니다.
-그래서 이를 무료로 사용할 수 있는 서비스를 개발하였습니다.
+시가 총액 상위 100개 미국 주식 중 RSI(Relative Strengh Index) 보조지표 기준 과매수/과매도 상태인 종목을 알려주는 웹앱입니다.
 단, 1분에 5개 종목만 받아올 수 있습니다 (무료 API 사용하였습니다.) 
 
 ### 배포 URL: https://stock-alert-app.vercel.app/
 
-![ezgif com-video-to-gif](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/5a1e97c7-eefe-4321-8f5c-4ca8d1a8e5dc)
-
+![stock-alert-demo](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/e48c2c3d-b043-45bf-8df2-d5b800ab93b8)
 
 ## 📌 Authors
 - [@saul-atomrigs](https://www.github.com/saul-atomrigs)
 
 
 ## 📌 Tech Stack
-- 언어: TypeScript
 - 프론트엔드: React18, Next.js13, Styled-Components
 - 주가 데이터 API: polygon.io
-- 차트 라이브러리: apexcharts
+- 차트 라이브러리: apexcharts, react-financial-charts
 - 코드 컨벤션: eslint, prettier
 
 ## 📌 Design System
