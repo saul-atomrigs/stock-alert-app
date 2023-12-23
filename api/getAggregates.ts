@@ -29,7 +29,6 @@ export async function getAggregates() {
       }
     });
 
-    console.log(closeStockPrices);
     return closeStockPrices;
   } catch (error) {
     console.error('getAggregates Error', error);
