@@ -11,7 +11,7 @@ const CandleChart = dynamic(() => import('@/components/charts/CandleChart'), {
 import type { Aggregate, Results } from '@/types';
 import { getRsi } from '@/api/getRsi';
 import { getAggregates } from '@/api/getAggregates';
-import Chart from '@/components/Chart';
+import Chart from '@/components/charts/Chart';
 import Table from '@/components/Table';
 import Button from '@/components/Button';
 import { Loading } from '@/components/Loading';
