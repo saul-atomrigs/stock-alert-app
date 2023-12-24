@@ -54,14 +54,14 @@ const Table = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3rem;
+    height: 2rem;
     border-bottom: 1px solid ${gray200};
   `,
   HeaderTitle: styled.span`
     display: flex;
     color: ${gray900};
     font-family: Pretendard;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 1.75rem */

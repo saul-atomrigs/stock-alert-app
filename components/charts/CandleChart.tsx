@@ -53,7 +53,7 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
     );
 
   const height = 350;
-  const margin = { left: 0, right: 48, top: 20, bottom: 50 };
+  const margin = { left: 0, right: 50, top: 0, bottom: 30 };
 
   const ema12 = ema()
     .id(1)
@@ -61,7 +61,7 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
     .merge((d, c) => {
       d.ema12 = c;
     })
-    .accessor(d => d.ema12);
+    .accessor(d => d?.ema12);
 
   const ema26 = ema()
     .id(2)

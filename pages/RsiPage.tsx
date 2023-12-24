@@ -75,9 +75,9 @@ export default function RsiPage() {
         </TableGroup>
       </div>
 
-      <div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
         {isAggregatesLoading ? (
-          <SkeletonLoading width={'100%'} height={'2.5rem'} />
+          <SkeletonLoading width={'100%'} height={'2rem'} />
         ) : (
           <TickerSlider aggregates={aggregates} />
         )}
@@ -107,6 +107,7 @@ const Main = styled.main`
 const TableGroup = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 1.5rem;
   height: 30%;
   gap: 2rem;
 `;

@@ -37,7 +37,7 @@ const PrimaryChip = styled.div<{ clickable?: boolean }>`
   align-items: center;
   justify-content: center;
   font-family: Pretendard;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-style: normal;
   font-weight: 400;
   line-height: 140%; /* 1.4rem */
