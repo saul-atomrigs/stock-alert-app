@@ -12,7 +12,7 @@ export type StockDataArray = {
 export default async function getAggregatesByTicker(ticker: string) {
   try {
     const today = new Date().toISOString().split('T')[0];
-    const sixMonthsAgo = new Date(Date.now() - 12 * 30 * 24 * 60 * 60 * 1000)
+    const sixMonthsAgo = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
       .toISOString()
       .split('T')[0];
 
