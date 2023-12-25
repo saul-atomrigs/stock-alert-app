@@ -1,7 +1,6 @@
-import getAggregatesByTicker from '@/api/getAggregatesByTicker';
+import { useEffect, useState } from 'react';
 import { format } from 'd3-format';
 import { timeFormat } from 'd3-time-format';
-import { useEffect, useState } from 'react';
 import {
   BarSeries,
   CandlestickSeries,
@@ -27,6 +26,7 @@ import {
 } from 'react-financial-charts';
 
 import type { StockDataArray } from '@/api/getAggregatesByTicker';
+import getAggregatesByTicker from '@/api/getAggregatesByTicker';
 
 type CandleChartProps = {
   width: number;
@@ -54,7 +54,6 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
 
   const height = 350;
   const margin = { left: 0, right: 50, top: 0, bottom: 30 };
-
   const ema12 = ema()
     .id(1)
     .options({ windowSize: 12 })
@@ -62,6 +61,7 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
       d.ema12 = c;
     })
     .accessor(d => d?.ema12);
+  ema12(closeStockPrices);
 
   const ema26 = ema()
     .id(2)
@@ -70,6 +70,7 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
       d.ema26 = c;
     })
     .accessor(d => d?.ema26);
+  ema26(closeStockPrices);
 
   const elder = elderRay();
 
