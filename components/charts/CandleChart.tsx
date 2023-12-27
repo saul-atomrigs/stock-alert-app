@@ -10,6 +10,7 @@ import {
   CurrentCoordinate,
   EdgeIndicator,
   ElderRaySeries,
+  RSISeries,
   LineSeries,
   MouseCoordinateX,
   MouseCoordinateY,
@@ -22,6 +23,7 @@ import {
   discontinuousTimeScaleProviderBuilder,
   elderRay,
   ema,
+  rsi,
   lastVisibleItemBasedZoomAnchor,
 } from 'react-financial-charts';
 
@@ -73,8 +75,11 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
   ema26(closeStockPrices);
 
   const elder = elderRay();
+  // console.log('elder ray', elder(ema26(ema12(closeStockPrices))));
 
-  // const calculatedData = elder(ema26(ema12(closeStockPrices)));
+  const rsiCalulator = rsi();
+  const rsiObj = rsiCalulator(ema26(ema12(closeStockPrices)));
+
   const { data, xScale, xAccessor, displayXAccessor } =
     ScaleProvider(closeStockPrices);
   const pricesDisplayFormat = format('.2f');
@@ -191,15 +196,14 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
         <ZoomButtons />
         <OHLCTooltip origin={[8, 16]} />
       </Chart>
+
+      {/* RSI Chart */}
       <Chart
         id={4}
         height={elderRayHeight}
-        yExtents={[0, elder.accessor()]}
         origin={elderRayOrigin}
-        padding={{ top: 8, bottom: 8 }}
+        yExtents={[0, 100]}
       >
-        <ElderRaySeries yAccessor={elder.accessor()} />
-
         <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
         <YAxis ticks={4} tickFormat={pricesDisplayFormat} />
 
@@ -209,17 +213,15 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
           displayFormat={pricesDisplayFormat}
         />
 
+        <RSISeries yAccessor={rsiCalulator.accessor()} />
+
         <SingleValueTooltip
-          yAccessor={elder.accessor()}
-          yLabel="Elder Ray"
-          yDisplayFormat={d =>
-            `${pricesDisplayFormat(d.bullPower)}, ${pricesDisplayFormat(
-              d.bearPower,
-            )}`
-          }
+          yAccessor={rsiCalulator.accessor()}
+          yLabel="RSI"
           origin={[8, 16]}
         />
       </Chart>
+
       <CrossHairCursor />
     </ChartCanvas>
   );
