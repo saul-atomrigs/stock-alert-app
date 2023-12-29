@@ -79,6 +79,7 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
 
   const rsiCalulator = rsi();
   const rsiObj = rsiCalulator(ema26(ema12(closeStockPrices)));
+  const currentRsi = rsiObj[rsiObj.length - 1].rsi.toFixed(2);
 
   const { data, xScale, xAccessor, displayXAccessor } =
     ScaleProvider(closeStockPrices);
