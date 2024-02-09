@@ -11,12 +11,12 @@ const CandleChart = dynamic(() => import('@/components/charts/CandleChart'), {
 import type { Aggregate, Results } from '@/types';
 import { getRsi } from '@/api/getRsi';
 import { getAggregates } from '@/api/getAggregates';
-import Chart from '@/components/charts/Chart';
 import Table from '@/components/Table';
 import Button from '@/components/Button';
 import { Loading } from '@/components/Loading';
 import TickerSlider from '@/components/TickerSlider';
 import SkeletonLoading from '@/components/Skeleton';
+import { STOCK_LABEL_LIST } from '@/data/stocklist';
 
 export default function RsiPage() {
   const [overbought, setOverbought] = useState<string[]>([]);
@@ -26,6 +26,9 @@ export default function RsiPage() {
   const [isAggregatesLoading, setIsAggregatesLoading] = useState(true);
   const [selectedTicker, setSelectedTicker] = useState('AAPL');
   const [aggregates, setAggregates] = useState<Aggregate[] | undefined>([]);
+
+  const stockLabel =
+    STOCK_LABEL_LIST[selectedTicker as keyof typeof STOCK_LABEL_LIST];
 
   const [ref, { width }] = useMeasure<HTMLDivElement>();
 
@@ -55,8 +58,12 @@ export default function RsiPage() {
   }, []);
 
   return (
-    <Main>
-      <div ref={ref}>
+    <Main ref={ref}>
+      <VerticalStackBlock>
+        <Header>
+          <h1>{stockLabel}</h1>
+        </Header>
+
         <CandleChart width={width} ticker={selectedTicker} />
 
         <TableGroup>
@@ -73,9 +80,9 @@ export default function RsiPage() {
             setSelectedTicker={setSelectedTicker}
           />
         </TableGroup>
-      </div>
+      </VerticalStackBlock>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+      <VerticalStackBlock>
         {isAggregatesLoading ? (
           <SkeletonLoading width={'100%'} height={'2rem'} />
         ) : (
@@ -88,7 +95,7 @@ export default function RsiPage() {
         >
           {isRsiLoading ? <Loading /> : 'RSI 스캔 시작하기'}
         </Button>
-      </div>
+      </VerticalStackBlock>
     </Main>
   );
 }
@@ -102,6 +109,19 @@ const Main = styled.main`
   // 가로길이 최소값 300px, 평상시 90%, 최대 700px (media query 대신 사용함):
   width: clamp(300px, 90%, 700px);
   border-radius: 1rem;
+`;
+
+const VerticalStackBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
 `;
 
 const TableGroup = styled.div`

@@ -1,12 +1,14 @@
 import axios from 'axios';
+import { STOCK_LABEL_LIST } from '@/data/stocklist';
 
-export type StockDataArray = {
+export type StockData = {
   date: string;
   close: number;
   volume: number;
   open: number;
   high: number;
   low: number;
+  label: string;
 };
 
 export default async function getAggregatesByTicker(ticker: string) {
@@ -16,7 +18,10 @@ export default async function getAggregatesByTicker(ticker: string) {
       .toISOString()
       .split('T')[0];
 
-    let stockDataArray: StockDataArray[] = [];
+    const STOCK_LABEL =
+      STOCK_LABEL_LIST[ticker as keyof typeof STOCK_LABEL_LIST];
+
+    const stockDataArray: StockData[] = [];
 
     const result = await axios(
       `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${sixMonthsAgo}/${today}?adjusted=true&sort=asc&limit=120&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
@@ -54,6 +59,7 @@ export default async function getAggregatesByTicker(ticker: string) {
           high: element.h,
           close: element.c,
           volume: element.v,
+          label: STOCK_LABEL,
         });
       },
     );
