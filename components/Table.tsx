@@ -59,7 +59,6 @@ const Table = {
   `,
   HeaderTitle: styled.span`
     display: flex;
-    color: ${gray900};
     font-family: Pretendard;
     font-size: 1rem;
     font-style: normal;
