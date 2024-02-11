@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import axios from 'axios';
 
 import type { Results } from '@/types';
+import { sleep } from '@/utils';
 import { STOCKLIST } from '../data/stocklist';
 
 type RsiProps = {
@@ -10,12 +11,6 @@ type RsiProps = {
 };
 
 export async function getRsi({ setResults, setIsRsiLoading }: RsiProps) {
-  const sleep = (ms: number) => {
-    return new Promise(resolve => {
-      setTimeout(resolve, ms);
-    });
-  };
-
   setIsRsiLoading(true);
 
   try {

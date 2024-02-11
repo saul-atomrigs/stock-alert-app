@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { STOCKLIST } from '@/data/stocklist';
+import { yesterday } from '@/utils';
 
 type Aggregate = {
   Ticker: string;
@@ -7,12 +8,6 @@ type Aggregate = {
 };
 
 export async function getAggregates() {
-  const today = new Date().toISOString().split('T')[0];
-
-  const yesterday = new Date(Date.now() - 48 * 60 * 60 * 1000)
-    .toISOString()
-    .split('T')[0];
-
   try {
     let closeStockPrices: Aggregate[] = [];
 
