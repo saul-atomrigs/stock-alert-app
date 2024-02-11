@@ -27,7 +27,7 @@ import {
   lastVisibleItemBasedZoomAnchor,
 } from 'react-financial-charts';
 
-import type { StockDataArray } from '@/api/getAggregatesByTicker';
+import type { StockData } from '@/api/getAggregatesByTicker';
 import getAggregatesByTicker from '@/api/getAggregatesByTicker';
 
 type CandleChartProps = {
@@ -36,9 +36,7 @@ type CandleChartProps = {
 };
 
 const CandleChart = ({ width, ticker }: CandleChartProps) => {
-  const [closeStockPrices, setCloseStockPrices] = useState<StockDataArray[]>(
-    [],
-  );
+  const [closeStockPrices, setCloseStockPrices] = useState<StockData[]>([]);
 
   useEffect(() => {
     async function getCloseStockPrices() {
@@ -151,8 +149,12 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
       </Chart>
 
       <Chart id={3} height={chartHeight} yExtents={candleChartExtents}>
-        <XAxis showGridLines showTickLabel={false} />
-        <YAxis showGridLines tickFormat={pricesDisplayFormat} />
+        <XAxis showGridLines showTickLabel={false} tickLabelFill="#666" />
+        <YAxis
+          showGridLines
+          tickFormat={pricesDisplayFormat}
+          tickLabelFill="#666"
+        />
         <CandlestickSeries />
         <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
         <CurrentCoordinate
@@ -177,6 +179,7 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
           yAccessor={yEdgeIndicator}
         />
         <MovingAverageTooltip
+          textFill="#666"
           origin={[8, 24]}
           options={[
             {
@@ -195,7 +198,6 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
         />
 
         <ZoomButtons />
-        <OHLCTooltip origin={[8, 16]} />
       </Chart>
 
       {/* RSI Chart */}
@@ -205,8 +207,16 @@ const CandleChart = ({ width, ticker }: CandleChartProps) => {
         origin={elderRayOrigin}
         yExtents={[0, 100]}
       >
-        <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" />
-        <YAxis ticks={4} tickFormat={pricesDisplayFormat} />
+        <XAxis
+          showGridLines
+          gridLinesStrokeStyle="#e0e3eb"
+          tickLabelFill="#666"
+        />
+        <YAxis
+          ticks={4}
+          tickFormat={pricesDisplayFormat}
+          tickLabelFill="#666"
+        />
 
         <MouseCoordinateX displayFormat={timeDisplayFormat} />
         <MouseCoordinateY

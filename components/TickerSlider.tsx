@@ -23,13 +23,8 @@ export default function TickerSlider({
 
 const Ticker = {
   Wrap: styled.div`
-    /* position: fixed; */
-    /* bottom: 0; */
-    /* width: 100%; */
     overflow: hidden;
     height: 4rem;
-    background-color: rgba(#000, 0.9);
-    /* padding-left: 100%; */
     box-sizing: content-box;
   `,
   Container: styled.div`
@@ -37,7 +32,6 @@ const Ticker = {
     height: 4rem;
     line-height: 4rem;
     white-space: nowrap;
-    /* padding-right: 100%; */
     box-sizing: content-box;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
@@ -74,13 +68,11 @@ const Ticker = {
       display: inline-block;
       padding: 0 2rem;
       font-size: 2rem;
-      color: #000;
     }
   `,
   Item: styled.div`
     display: inline-block;
     padding: 0 2rem;
     font-size: 1rem;
-    color: #000;
   `,
 };
