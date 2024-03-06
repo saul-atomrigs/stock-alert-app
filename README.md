@@ -4,7 +4,13 @@
 
 ### 배포 URL: https://stock-alert-app.vercel.app/
 
-![stock-alert-demo](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/e48c2c3d-b043-45bf-8df2-d5b800ab93b8)
+
+
+|                                                라이트모드                                                 |                                                다크모드                                                 |
+| :-----------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: |
+| ![234](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/5b393628-883c-4af9-b7f7-a36f85654a51) | ![123](https://github.com/saul-atomrigs/stock-alert-app/assets/82362278/210fe56c-2f8f-4211-b0ec-86ba82c3da4c) |
+
+
 
 ## 📌 Authors
 - [@saul-atomrigs](https://www.github.com/saul-atomrigs)
