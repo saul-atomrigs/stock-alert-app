@@ -16,7 +16,7 @@ import {
   Button,
   Loading,
   TickerSlider,
-  Skeleton,
+  SkeletonLoading,
   Tooltip,
 } from '@/components';
 import { STOCK_LABEL_LIST } from '@/data/stocklist';
@@ -87,7 +87,7 @@ export default function RsiPage() {
 
       <VerticalStackBlock>
         {isAggregatesLoading ? (
-          <Skeleton width={'100%'} height={'2rem'} />
+          <SkeletonLoading width={'100%'} height={'2rem'} />
         ) : (
           <TickerSlider aggregates={aggregates} />
         )}
