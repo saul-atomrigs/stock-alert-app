@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Loading = styled.div`
+const Loading = styled.div`
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
@@ -27,3 +27,5 @@ export const Loading = styled.div`
     }
   }
 `;
+
+export default Loading;

@@ -11,12 +11,14 @@ const CandleChart = dynamic(() => import('@/components/charts/CandleChart'), {
 import type { Aggregate, Results } from '@/types';
 import { getRsi } from '@/api/getRsi';
 import { getAggregates } from '@/api/getAggregates';
-import Table from '@/components/Table';
-import Button from '@/components/Button';
-import { Loading } from '@/components/Loading';
-import TickerSlider from '@/components/TickerSlider';
-import SkeletonLoading from '@/components/Skeleton';
-import Tooltip from '@/components/Tooltip';
+import {
+  Table,
+  Button,
+  Loading,
+  TickerSlider,
+  Skeleton,
+  Tooltip,
+} from '@/components';
 import { STOCK_LABEL_LIST } from '@/data/stocklist';
 
 export default function RsiPage() {
@@ -85,7 +87,7 @@ export default function RsiPage() {
 
       <VerticalStackBlock>
         {isAggregatesLoading ? (
-          <SkeletonLoading width={'100%'} height={'2rem'} />
+          <Skeleton width={'100%'} height={'2rem'} />
         ) : (
           <TickerSlider aggregates={aggregates} />
         )}
