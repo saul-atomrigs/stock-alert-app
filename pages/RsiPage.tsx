@@ -16,6 +16,7 @@ import Button from '@/components/Button';
 import { Loading } from '@/components/Loading';
 import TickerSlider from '@/components/TickerSlider';
 import SkeletonLoading from '@/components/Skeleton';
+import Tooltip from '@/components/Tooltip';
 import { STOCK_LABEL_LIST } from '@/data/stocklist';
 
 export default function RsiPage() {
@@ -89,12 +90,14 @@ export default function RsiPage() {
           <TickerSlider aggregates={aggregates} />
         )}
 
-        <Button
-          fullWidth
-          onClick={() => getRsi({ setResults, setIsRsiLoading })}
-        >
-          {isRsiLoading ? <Loading /> : 'RSI 스캔 시작하기'}
-        </Button>
+        <Tooltip content="무료 버전에서는 1분당 종목 5개만 스캔됩니다">
+          <Button
+            fullWidth
+            onClick={() => getRsi({ setResults, setIsRsiLoading })}
+          >
+            {isRsiLoading ? <Loading /> : 'RSI 스캔 시작하기'}
+          </Button>
+        </Tooltip>
       </VerticalStackBlock>
     </Main>
   );
