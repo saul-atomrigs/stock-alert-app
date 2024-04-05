@@ -12,7 +12,7 @@ export async function getAggregates() {
     let closeStockPrices: Aggregate[] = [];
 
     const result = await axios(
-      `https://api.polygon.io/v2/aggs/grouped/locale/us/market/stocks/${yesterday}?adjusted=true&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
+      `${process.env.NEXT_PUBLIC_POLYGON_API_BASE_URL}v2/aggs/grouped/locale/us/market/stocks/${yesterday}?adjusted=true&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
     );
 
     const aggregates = result.data.results;
