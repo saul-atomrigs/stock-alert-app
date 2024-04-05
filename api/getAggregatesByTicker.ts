@@ -19,9 +19,18 @@ export default async function getAggregatesByTicker(ticker: string) {
 
     const stockDataArray: StockData[] = [];
 
-    const result = await axios(
-      `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${sixMonthsAgo}/${today}?adjusted=true&sort=asc&limit=120&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
-    );
+    const API_URL =
+      `${process.env.NEXT_PUBLIC_POLYGON_API_BASE_URL}` +
+      'v2/aggs/ticker/' +
+      `${ticker}` +
+      '/range/1/day/' +
+      `${sixMonthsAgo}` +
+      '/' +
+      `${today}` +
+      '?adjusted=true&sort=asc&limit=120&apiKey=' +
+      `${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`;
+
+    const result = await axios(API_URL);
     const aggregates = result.data.results;
 
     aggregates.forEach(
