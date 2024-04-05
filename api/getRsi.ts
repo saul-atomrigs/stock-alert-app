@@ -17,7 +17,7 @@ export async function getRsi({ setResults, setIsRsiLoading }: RsiProps) {
     for (let i = 0; i < STOCKLIST.length; i += 5) {
       await sleep(61000);
       const rest = await axios.get(
-        `https://api.polygon.io/v1/indicators/rsi/${STOCKLIST[i]}?timespan=day&adjusted=true&window=14&series_type=close&order=desc&limit=1&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
+        `${process.env.NEXT_PUBLIC_POLYGON_API_BASE_URL}v1/indicators/rsi/${STOCKLIST[i]}?timespan=day&adjusted=true&window=14&series_type=close&order=desc&limit=1&apiKey=${process.env.NEXT_PUBLIC_POLYGON_API_KEY}`,
       );
 
       for (let j = 0; j < 5; j++) {
